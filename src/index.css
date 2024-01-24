@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.selection{
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+  width: 200px;
+  height: 40px;
+  font-size: 25px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius:8px ;
+}
+.selectable{
+  height: 100%;
+  width: 30px;
+  background: black;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+}
