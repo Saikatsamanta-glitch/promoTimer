@@ -39,7 +39,11 @@ console.log(prog)
           })
         }
       </select>
-
+<div className='customtimers '>
+        <button className='selection' onClick={()=>setProg(225)}>30min</button>
+        <button className='selection' onClick={()=>{setProg(450)}}>1hour</button>
+        <button className='selection' onClick={()=>{setProg(900)}}>2hour</button>
+</div>
     </>
   );
 }

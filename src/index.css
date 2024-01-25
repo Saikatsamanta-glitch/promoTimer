@@ -37,3 +37,7 @@ code {
   bottom: 0;
   transform: translate(100%, 100%);
 }
+.customtimers{
+  margin-top: 100px;
+  display: flex;
+}
