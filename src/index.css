@@ -31,3 +31,9 @@ code {
   right: 0px;
   cursor: pointer;
 }
+#dragslide{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(100%, 100%);
+}

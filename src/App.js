@@ -2,30 +2,44 @@ import './App.css';
 import { useState } from 'react';
 function App() {
   const [barstyle, setBarStyle] = useState("bees");
-  const styles = ["crosses","jupiter","piano","dominos","pie","bees","food","floor","wiggle","bars","bubbles","ticTac","zigZag","stripes","clouds","aztec","circuit"];
-  const [prog,setProg] = useState(0);
-  const changestyle =(e)=>{
-    setBarStyle(e.target.value)
+  const styles = ["crosses", "jupiter", "piano", "dominos", "pie", "bees", "food", "floor", "wiggle", "bars", "bubbles", "ticTac", "zigZag", "stripes", "clouds", "aztec", "circuit"];
+  const [prog, setProg] = useState(10);
+  const changestyle=(e)=>{setBarStyle(e.target.value)};
+  const handler=(e)=>{
+    const startSize = prog;
+    const startPosition = e.pageX ;
+    console.log("startSize",startSize,"postion",startPosition)
+    function onMouseMove(mouseMoveEvent) {
+      if(startSize-startPosition+mouseMoveEvent.pageX<=900){
+        setProg(startSize-startPosition+mouseMoveEvent.pageX)
+      }
+      
+    }
+    function onMouseUp() {
+      document.body.removeEventListener("mousemove", onMouseMove);
+    }
+    document.body.addEventListener('mousemove',onMouseMove )
+    document.body.addEventListener('mouseup', onMouseUp,{once:true})
   }
 
-  const ondrag = (e)=>{
-    console.log(e.clientX);
-    setProg(e.clientX)
-  }
-
+console.log(prog)
 
   return (
     <>
       <div className="progress">
-        <div style={{width:`${prog}px`}} className={`bar shadow ${barstyle}`}> <div className='selectable' onDrag={ondrag} draggable></div> </div>
+        <div style={{ width: `${prog}px` }} className={`bar shadow ${barstyle}`}>
+            <button id='dragslide' onMouseDown={handler}> Slide </button>
+        </div>
       </div>
+
       <select className='selection' onChange={changestyle}>
         {
-          styles.map((v,i)=>{
+          styles.map((v, i) => {
             return <option key={i} value={v}> {v} </option>
           })
         }
       </select>
+
     </>
   );
 }
