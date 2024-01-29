@@ -41,3 +41,20 @@ code {
   margin-top: 100px;
   display: flex;
 }
+.btncustom{
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+}
+.selections{
+  width: 200px;
+  height: 40px;
+  font-size: 25px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius:8px;
+background: #bbffec;
+}
