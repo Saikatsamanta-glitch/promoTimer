@@ -58,3 +58,21 @@ code {
   border-radius:8px;
 background: #bbffec;
 }
+.pausebtn{
+ cursor: pointer;
+  margin: auto;
+  margin-top: 60px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: rgb(255, 123, 123);
+}
+.startbtn{
+  cursor: pointer;
+  margin: auto;
+  margin-top: 60px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: rgb(158, 255, 156);
+}

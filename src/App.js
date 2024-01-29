@@ -1,8 +1,9 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function App() {
   const [barstyle, setBarStyle] = useState("bees");
   const styles = ["crosses", "jupiter", "piano", "dominos", "pie", "bees", "food", "floor", "wiggle", "bars", "bubbles", "ticTac", "zigZag", "stripes", "clouds", "aztec", "circuit"];
+  const [mode,setMode] = useState(true);
   const [prog, setProg] = useState(7.5*30);
   const changestyle = (e) => { setBarStyle(e.target.value) };
   const handler = (e) => {
@@ -22,7 +23,15 @@ function App() {
     document.body.addEventListener('mouseup', onMouseUp, { once: true })
   }
 
-  console.log(prog)
+  useEffect(()=>{
+    if(mode === false){
+      setInterval(()=>{
+      setProg(prog-7.5);
+      console.log("timer is working")
+    },1000)
+    }
+    
+  },[mode, prog])
 
   return (
     <>
@@ -48,6 +57,7 @@ function App() {
         <button className='selections' onClick={() => setProg(prog-15*7.5)}>-15min</button>
         <button className='selections' onClick={() => { setProg(prog+15*7.5) }}>+15min</button>
       </div>
+      <div className={mode?'startbtn':'pausebtn'} onClick={()=>setMode(!mode)}></div>
     </>
   );
 }
