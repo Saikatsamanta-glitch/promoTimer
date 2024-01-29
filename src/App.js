@@ -3,14 +3,14 @@ import { useState } from 'react';
 function App() {
   const [barstyle, setBarStyle] = useState("bees");
   const styles = ["crosses", "jupiter", "piano", "dominos", "pie", "bees", "food", "floor", "wiggle", "bars", "bubbles", "ticTac", "zigZag", "stripes", "clouds", "aztec", "circuit"];
-  const [prog, setProg] = useState(10);
+  const [prog, setProg] = useState(60);
   const changestyle=(e)=>{setBarStyle(e.target.value)};
   const handler=(e)=>{
     const startSize = prog;
     const startPosition = e.pageX ;
     console.log("startSize",startSize,"postion",startPosition)
     function onMouseMove(mouseMoveEvent) {
-      if(startSize-startPosition+mouseMoveEvent.pageX<=900){
+      if(startSize-startPosition+mouseMoveEvent.pageX<=900 && startSize-startPosition+mouseMoveEvent.pageX>=0){
         setProg(startSize-startPosition+mouseMoveEvent.pageX)
       }
       
@@ -28,7 +28,7 @@ console.log(prog)
     <>
       <div className="progress">
         <div style={{ width: `${prog}px` }} className={`bar shadow ${barstyle}`}>
-            <button id='dragslide' onMouseDown={handler}> Slide </button>
+            <button id='dragslide' onMouseDown={handler}> {(prog/7.5).toFixed(1)} </button>
         </div>
       </div>
 
